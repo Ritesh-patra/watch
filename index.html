@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnandWatchCo - Premium Watch Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'luxury-gold': '#D4AF37',
+                        'luxury-dark': '#1A1A1A',
+                        'luxury-gray': '#2D2D2D',
+                        'luxury-light': '#F8F8F8',
+                        'luxury-accent': '#B8860B',
+                        'luxury-rose': '#E8B4B8',
+                        'luxury-blue': '#1E3A8A',
+                        'luxury-emerald': '#059669',
+                        'luxury-purple': '#7C3AED',
+                        'luxury-bronze': '#CD7F32'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out',
+                        'rotate-slow': 'rotate 20s linear infinite',
+                        'pulse-gold': 'pulseGold 2s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s linear infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(0deg);
+            }
+
+            75% {
+                transform: translateY(-10px) rotate(-1deg);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            }
+
+            to {
+                box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseGold {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .luxury-gradient {
+            background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 50%, #1A1A1A 100%);
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 50%, #D4AF37 100%);
+        }
+
+        .blue-gradient {
+            background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #1E3A8A 100%);
+        }
+
+        .emerald-gradient {
+            background: linear-gradient(135deg, #059669 0%, #10B981 50%, #059669 100%);
+        }
+
+        .purple-gradient {
+            background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #7C3AED 100%);
+        }
+
+        .watch-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .watch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .watch-card:hover::before {
+            left: 100%;
+        }
+
+        .watch-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #D4AF37, #B8860B);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(45, 45, 45, 0.8)),
+                url('/placeholder.svg?height=800&width=1200');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-luxury {
+            background: linear-gradient(135deg, #D4AF37, #B8860B);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-luxury:hover::before {
+            left: 100%;
+        }
+
+        .btn-luxury:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1A1A1A, #2D2D2D);
+            z-index: 1000;
+            transition: right 0.4s ease;
+            backdrop-filter: blur(20px);
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .menu-overlay.show {
+            display: block;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            animation: pulse-gold 2s infinite;
+        }
+
+        .quote-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .quote-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .shimmer-effect {
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s linear infinite;
+        }
+
+        .luxury-border {
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #D4AF37, #B8860B) border-box;
+        }
+
+        .brand-logo {
+            filter: grayscale(100%) brightness(0.8);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-logo:hover {
+            filter: grayscale(0%) brightness(1.1);
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+        }
+
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            transform: translateX(800px);
+            transition: transform 0.4s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            border-top-color: #D4AF37;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        
+        #scroll {
+            width: 100%;
+            padding: 3vw 0vw;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            position: relative;
+            /* background-color: red; */
+            /* background-color: #c9bd73; */
+            overflow: hidden;
+        }
+
+        /* Left black fade */
+        #scroll::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            /* background: linear-gradient(to right, rgb(239, 220, 127), transparent); */
+            z-index: 2;
+        }
+
+        /* Right black fade */
+        #scroll::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        #img-box {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            gap: 40;
+            -webkit-animation-name: anime;
+            animation-name: anime;
+            -webkit-animation-duration: 15s;
+            animation-duration: 20s;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+            overflow: hidden;
+
+        }
+
+        #img-box img {
+            width: 10vw;
+            /* Responsive width */
+            height: 10vw;
+            /* Responsive height */
+            min-width: 80px;
+            /* For small screens */
+            min-height: 80px;
+            max-width: 120px;
+            /* Optional limit */
+            max-height: 120px;
+            object-fit: contain;
+            /* Perfectly fit logos */
+            border-radius: 8px;
+
+            padding: 10px;
+            /* Space inside image box */
+        }
+
+        @-webkit-keyframes anime {
+            form {
+                -webkit-transform: translate(0);
+                transform: translate(0);
+            }
+
+            to {
+                -webkit-transform: translate(-100%);
+                transform: translate(-100%);
+            }
+        }
+
+        @keyframes anime {
+            form {
+                -webkit-transform: translate(0);
+                transform: translate(0);
+            }
+
+            to {
+                -webkit-transform: translate(-100%);
+                transform: translate(-100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #img-box img {
+                width: 100px;
+                height: 70px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-luxury-light font-inter overflow-x-hidden">
+
+
+    <!-- Quote Modal -->
+    <div id="quoteModal" class="quote-modal">
+        <div class="bg-white rounded-3xl p-8 max-w-md mx-4 relative luxury-border">
+            <button onclick="closeQuoteModal()"
+                class="absolute top-4 right-4 text-gray-500 hover:text-luxury-gold text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="text-3xl font-playfair font-bold mb-6 text-luxury-dark">Get Quote</h3>
+            <form id="quoteForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                    <input type="text" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-luxury-gold focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                    <input type="email" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-luxury-gold focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
+                    <input type="tel" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-luxury-gold focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Watch Interest</label>
+                    <select required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-luxury-gold focus:outline-none">
+                        <option value="">Select Watch Type</option>
+                        <option value="luxury">Luxury Collection</option>
+                        <option value="sport">Sport Collection</option>
+                        <option value="classic">Classic Collection</option>
+                        <option value="limited">Limited Edition</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                    <textarea rows="3"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-luxury-gold focus:outline-none"
+                        placeholder="Tell us about your requirements..."></textarea>
+                </div>
+                <button type="submit" class="w-full btn-luxury text-white py-3 rounded-lg font-semibold">
+                    <span id="quoteButtonText">Submit Quote Request</span>
+                    <div id="quoteSpinner" class="loading-spinner hidden"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="menuOverlay" class="menu-overlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="p-6 border-b border-luxury-gold/20">
+            <div class="flex justify-between items-center">
+                <h2 class="text-2xl font-playfair font-bold text-luxury-gold">AnandWatchCo</h2>
+                <button onclick="toggleMobileMenu()" class="text-white hover:text-luxury-gold">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div class="p-6">
+            <nav class="space-y-4">
+                <a href="#home" class="block text-lg text-white hover:text-luxury-gold transition-colors">Home</a>
+                <a href="#collections"
+                    class="block text-lg text-white hover:text-luxury-gold transition-colors">Collections</a>
+                <a href="#brands" class="block text-lg text-white hover:text-luxury-gold transition-colors">Brands</a>
+                <a href="#why-choose" class="block text-lg text-white hover:text-luxury-gold transition-colors">Why
+                    Choose Us</a>
+                <a href="#services"
+                    class="block text-lg text-white hover:text-luxury-gold transition-colors">Services</a>
+                <a href="#testimonials"
+                    class="block text-lg text-white hover:text-luxury-gold transition-colors">Testimonials</a>
+                <a href="#contact" class="block text-lg text-white hover:text-luxury-gold transition-colors">Contact</a>
+                <button onclick="openQuoteModal()"
+                    class="block w-full text-left text-lg text-white hover:text-luxury-gold transition-colors">Get
+                    Quote</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full glass-effect z-50 transition-all duration-300" id="header">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <!-- Logo Image Box -->
+                    <div class="w-14 h-14 rounded-full overflow-hidden animate-glow border-2 border-luxury-gold">
+                        <img src="images/logo.jpg" alt="Anand Watch Logo" class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Brand Text -->
+                    <div>
+                        <h1 class="text-2xl font-playfair font-bold text-luxury-gold">Anand Watch Co</h1>
+                        <p class="text-xs text-gray-600">Premium Timepieces</p>
+                    </div>
+                </div>
+
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-luxury-dark hover:text-luxury-gold font-medium">Home</a>
+                    <a href="#collections"
+                        class="nav-link text-luxury-dark hover:text-luxury-gold font-medium">Collections</a>
+                    <a href="#brands" class="nav-link text-luxury-dark hover:text-luxury-gold font-medium">Brands</a>
+                    <a href="#why-choose" class="nav-link text-luxury-dark hover:text-luxury-gold font-medium">Why
+                        Choose Us</a>
+                    <a href="#services"
+                        class="nav-link text-luxury-dark hover:text-luxury-gold font-medium">Services</a>
+                    <a href="#testimonials"
+                        class="nav-link text-luxury-dark hover:text-luxury-gold font-medium">Testimonials</a>
+                    <a href="#contact" class="nav-link text-luxury-dark hover:text-luxury-gold font-medium">Contact</a>
+                </nav>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="openQuoteModal()"
+                        class="hidden md:block btn-luxury text-white px-6 py-2 rounded-lg font-semibold">
+                        Get Quote
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="lg:hidden text-luxury-dark hover:text-luxury-gold">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+                class="absolute top-20 left-20 w-32 h-32 border-2 border-luxury-gold/20 rounded-full animate-rotate-slow">
+            </div>
+            <div
+                class="absolute bottom-20 right-20 w-24 h-24 border-2 border-luxury-gold/30 rounded-full animate-float">
+            </div>
+            <div class="absolute top-1/2 left-10 w-16 h-16 border-2 border-luxury-gold/25 rounded-full animate-pulse">
+            </div>
+        </div>
+
+        <div class="container mx-auto py-28 sm:py-4 px-4 relative z-10">
+            <div class="grid lg:grid-cols-2   gap-16 items-center">
+
+
+                <!-- Content -->
+                <div class="text-white space-y-8 animate-slide-up order-2 lg:order-1">
+                    <div class="space-y-4">
+                        <p class="text-luxury-gold text-xl font-medium">Discover Timeless Elegance</p>
+                        <h1 class="text-6xl lg:text-7xl font-playfair font-bold leading-tight">
+                            Anand <span class="text-luxury-gold">Timepieces</span>
+                        </h1>
+                        <p class="text-xl text-gray-300 leading-relaxed max-w-2xl">
+                            Experience the perfect fusion of Swiss craftsmanship and modern innovation.
+                            Each timepiece tells a story of precision, elegance, and timeless beauty.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-6 pt-6">
+                        <a href="#collections"
+                            class="btn-luxury text-white px-8 py-4 rounded-lg font-semibold text-lg text-center">
+                            Explore Collection
+                        </a>
+                        <button onclick="openQuoteModal()"
+                            class="border-2 border-luxury-gold text-luxury-gold px-8 py-4 rounded-lg font-semibold text-lg hover:bg-luxury-gold hover:text-luxury-dark transition-all">
+                            Get Custom Quote
+                        </button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 pt-12">
+                        <div class="text-center">
+                            <div class="text-4xl font-playfair font-bold text-luxury-gold mb-2">20+</div>
+                            <p class="text-sm text-gray-300">Premium Brands</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-playfair font-bold text-luxury-gold mb-2">1000+</div>
+                            <p class="text-sm text-gray-300">Watch Models</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-playfair font-bold text-luxury-gold mb-2">25+</div>
+                            <p class="text-sm text-gray-300">Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Watch Display -->
+                <div class="relative order-1 lg:order-2">
+                    <div class="text-center">
+                        <div class="relative inline-block">
+                            <div class="w-72 h-72 sm:w-96 sm:h-96 mx-auto relative">
+                                <img src="images/image-removebg-preview.png" alt="Luxury Watch"
+                                    class="w-full h-full object-contain animate-float drop-shadow-2xl">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-luxury-gold/10 to-transparent rounded-full">
+                                </div>
+                                <div
+                                    class="absolute -top-4 -right-4 w-16 h-16 gold-gradient rounded-full flex items-center justify-center animate-pulse">
+                                    <i class="fas fa-crown text-luxury-dark text-xl"></i>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 glass-effect px-6 py-3 rounded-2xl">
+                                <p class="text-luxury-gold font-semibold">Swiss Made Excellence</p>
+                                <p class="text-white text-sm">Starting from 2,999</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <div class="flex flex-col items-center space-y-2">
+                <span class="text-sm">Scroll to explore</span>
+                <i class="fas fa-chevron-down text-xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section id="collections" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-playfair font-bold text-luxury-dark mb-4">
+                    Featured <span class="text-luxury-gold">Collections</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover our handpicked selection of the world's finest timepieces,
+                    each representing the pinnacle of horological excellence.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Watch 1 -->
+                <div class="watch-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer group">
+                    <div class="relative overflow-hidden">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Luxury Watch 1"
+                            class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute top-4 left-4 gold-gradient text-luxury-dark px-4 py-2 rounded-full text-sm font-bold">
+                            Limited Edition
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="glass-effect rounded-2xl p-3 text-white">
+                                <div class="flex items-center justify-between text-sm">
+                                    <span>Swiss Movement</span>
+                                    <span>⭐ 4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-playfair font-bold text-luxury-dark mb-2">Royal Chronograph</h3>
+                        <p class="text-gray-600 mb-4">Precision meets elegance in this masterpiece of Swiss engineering.
+                        </p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl font-bold text-luxury-gold">$4,999</span>
+                            <div class="text-sm text-green-600 font-semibold">In Stock</div>
+                        </div>
+                        <button onclick="openQuoteModal()"
+                            class="w-full btn-luxury text-white py-3 rounded-lg font-semibold">
+                            Get Quote
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Watch 2 -->
+                <div class="watch-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer group">
+                    <div class="relative overflow-hidden">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Luxury Watch 2"
+                            class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute top-4 left-4 blue-gradient text-white px-4 py-2 rounded-full text-sm font-bold">
+                            Bestseller
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="glass-effect rounded-2xl p-3 text-white">
+                                <div class="flex items-center justify-between text-sm">
+                                    <span>Automatic</span>
+                                    <span>⭐ 4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-playfair font-bold text-luxury-dark mb-2">Classic Heritage</h3>
+                        <p class="text-gray-600 mb-4">Timeless design with modern functionality for the discerning
+                            gentleman.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl font-bold text-luxury-gold">$3,499</span>
+                            <div class="text-sm text-green-600 font-semibold">In Stock</div>
+                        </div>
+                        <button onclick="openQuoteModal()"
+                            class="w-full btn-luxury text-white py-3 rounded-lg font-semibold">
+                            Get Quote
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Watch 3 -->
+                <div class="watch-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer group">
+                    <div class="relative overflow-hidden">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Luxury Watch 3"
+                            class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute top-4 left-4 emerald-gradient text-white px-4 py-2 rounded-full text-sm font-bold">
+                            New Arrival
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="glass-effect rounded-2xl p-3 text-white">
+                                <div class="flex items-center justify-between text-sm">
+                                    <span>Sapphire Crystal</span>
+                                    <span>⭐ 5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-playfair font-bold text-luxury-dark mb-2">Sport Elite</h3>
+                        <p class="text-gray-600 mb-4">Professional sports watch with advanced complications and
+                            durability.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl font-bold text-luxury-gold">$5,999</span>
+                            <div class="text-sm text-orange-600 font-semibold">Pre-Order</div>
+                        </div>
+                        <button onclick="openQuoteModal()"
+                            class="w-full btn-luxury text-white py-3 rounded-lg font-semibold">
+                            Get Quote
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- See All Brands Products CTA -->
+            <div class="text-center w-full mt-3 ">
+                <a href="allproducts.html"
+                    class="inline-flex items-center gap-3 bg-luxury-gold text-luxury-dark px-6 py-3 rounded-full font-semibold text-lg hover:bg-yellow-400 transition-all duration-300 shadow-md">
+                    <i class="fas fa-store text-xl"></i>
+                    See All Products
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Brands Section -->
+    <section id="brands" class="pb-24 pt-5 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-playfair font-bold text-luxury-dark mb-4">
+                    Premium <span class="text-luxury-gold">Brands</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We are proud authorized dealers of the world's most prestigious watch manufacturers,
+                    bringing you authentic timepieces with full warranty and support.
+                </p>
+            </div>
+
+            <!-- brands -->
+               <div id="scroll">
+                <div id="img-box">
+                    <img src="images/arrow+1851+logo.png" alt="">
+                    <img src="images/being human.jpg" alt="">
+                    <img src="images/blueberrys.png" alt="">
+                    <img src="images/celio_logo.avif" alt="">
+                    <img src="images/indian_terrain_logo_white.svg" alt="">
+                   
+                    <img src="images/spyker.avif" alt="">
+                    <img src="images/wrong.png" alt="">
+                    <img src="images/pepe london.png" alt="">
+                    <img src="images/indian.png" alt="">
+                </div>
+                <div id="img-box">
+                    <img src="images/arrow+1851+logo.png" alt="">
+                    <img src="images/being human.jpg" alt="">
+                    <img src="images/blueberrys.png" alt="">
+                    <img src="images/celio_logo.avif" alt="">
+                    <img src="images/indian_terrain_logo_white.svg" alt="">
+                    <img src="images/spyker.avif" alt="">
+                    <img src="images/wrong.png" alt="">
+                    <img src="images/pepe london.png" alt="">
+                    <img src="images/indian.png" alt="">
+
+                </div>
+            </div>
+
+            <!-- Brand Stats -->
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="text-4xl font-playfair font-bold text-luxury-gold mb-2">50+</div>
+                    <p class="text-gray-600">Authorized Brands</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-playfair font-bold text-luxury-blue mb-2">25+</div>
+                    <p class="text-gray-600">Years Partnership</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-playfair font-bold text-luxury-emerald mb-2">100%</div>
+                    <p class="text-gray-600">Authentic Guarantee</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-playfair font-bold text-luxury-purple mb-2">24/7</div>
+                    <p class="text-gray-600">Customer Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose" class="py-24 luxury-gradient">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-playfair font-bold text-white mb-4">
+                    Why Choose <span class="text-luxury-gold">AnandWatchCo</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    With over 25 years of expertise in luxury timepieces, we offer unmatched service,
+                    authenticity guarantee, and exclusive access to the world's finest watches.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card glass-effect rounded-3xl p-8 text-white hover:bg-white/20 transition-all">
+                    <div class="w-16 h-16 gold-gradient rounded-2xl flex items-center justify-center mb-6 animate-glow">
+                        <i class="fas fa-certificate text-luxury-dark text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Authenticity Guaranteed</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Every timepiece comes with manufacturer warranty and authenticity certification.
+                        We are authorized dealers with direct partnerships with luxury brands.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card glass-effect rounded-3xl p-8 text-white hover:bg-white/20 transition-all">
+                    <div class="w-16 h-16 blue-gradient rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Expert Consultation</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Our certified horologists provide personalized recommendations based on your
+                        preferences, lifestyle, and investment goals.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card glass-effect rounded-3xl p-8 text-white hover:bg-white/20 transition-all">
+                    <div class="w-16 h-16 emerald-gradient rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-tools text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Professional Service</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Complete after-sales service including maintenance, repair, and restoration
+                        by certified technicians using genuine parts.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card glass-effect rounded-3xl p-8 text-white hover:bg-white/20 transition-all">
+                    <div class="w-16 h-16 purple-gradient rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Lifetime Support</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Comprehensive lifetime support including insurance assistance,
+                        valuation updates, and upgrade programs for your collection.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card glass-effect rounded-3xl p-8 text-white hover:bg-white/20 transition-all">
+                    <div class="w-16 h-16 gold-gradient rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-gem text-luxury-dark text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Exclusive Access</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        First access to limited editions, special releases, and exclusive
+                        collections not available through regular retail channels.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card glass-effect rounded-3xl p-8 text-white hover:bg-white/20 transition-all">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-luxury-bronze to-yellow-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-handshake text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-bold mb-4">Personal Relationship</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Build a lasting relationship with dedicated watch specialists who
+                        understand your preferences and help grow your collection.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-playfair font-bold text-luxury-dark mb-4">
+                    Our <span class="text-luxury-gold">Services</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive watch services from expert horologists and certified technicians
+                    to keep your timepieces in perfect condition.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all luxury-border">
+                    <div class="w-16 h-16 gold-gradient rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-tools text-luxury-dark text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-bold text-luxury-dark mb-4">Watch Repair & Service</h3>
+                    <p class="text-gray-600 mb-6">Expert repair services by certified horologists for all luxury watch
+                        brands with genuine parts guarantee.</p>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-gold mr-2"></i>Movement
+                            servicing & calibration</li>
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-gold mr-2"></i>Case & bracelet
+                            refinishing</li>
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-gold mr-2"></i>Water resistance
+                            testing</li>
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-gold mr-2"></i>Crystal
+                            replacement</li>
+                    </ul>
+                    <button onclick="openQuoteModal()"
+                        class="w-full btn-luxury text-white py-3 rounded-lg font-semibold">
+                        Request Service
+                    </button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all luxury-border">
+                    <div class="w-16 h-16 blue-gradient rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-certificate text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-bold text-luxury-dark mb-4">Authentication & Appraisal</h3>
+                    <p class="text-gray-600 mb-6">Professional authentication and appraisal services for insurance,
+                        resale, or collection documentation.</p>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-blue mr-2"></i>Authenticity
+                            verification</li>
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-blue mr-2"></i>Market valuation
+                            reports</li>
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-blue mr-2"></i>Insurance
+                            documentation</li>
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-blue mr-2"></i>Condition
+                            assessment</li>
+                    </ul>
+                    <button onclick="openQuoteModal()"
+                        class="w-full bg-luxury-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Get Appraisal
+                    </button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all luxury-border">
+                    <div class="w-16 h-16 emerald-gradient rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-exchange-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-bold text-luxury-dark mb-4">Trade-In & Consignment</h3>
+                    <p class="text-gray-600 mb-6">Premium trade-in program and consignment services for upgrading or
+                        selling your luxury timepieces.</p>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-emerald mr-2"></i>Fair market
+                            evaluation</li>
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-emerald mr-2"></i>Instant trade
+                            credit</li>
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-emerald mr-2"></i>Consignment
+                            services</li>
+                        <li class="flex items-center"><i class="fas fa-check text-luxury-emerald mr-2"></i>Upgrade
+                            assistance</li>
+                    </ul>
+                    <button onclick="openQuoteModal()"
+                        class="w-full bg-luxury-emerald text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors">
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section id="testimonials" class="py-24 luxury-gradient">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-playfair font-bold text-white mb-4">
+                    Customer <span class="text-luxury-gold">Testimonials</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Hear from our satisfied customers who have experienced the AnandWatchCo difference
+                    in luxury timepiece acquisition and service.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-8 rounded-3xl text-white">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Customer"
+                            class="w-15 h-15 rounded-full border-2 border-luxury-gold">
+                        <div>
+                            <h4 class="font-bold text-lg">James Mitchell</h4>
+                            <p class="text-sm text-luxury-gold">Rolex Submariner Owner</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-1 mb-4">
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                    </div>
+                    <p class="leading-relaxed text-gray-300">
+                        "Exceptional service and expertise! The team at AnandWatchCo helped me find the perfect Rolex
+                        and provided invaluable guidance throughout the process. Their after-sales service is
+                        unmatched."
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-8 rounded-3xl text-white">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Customer"
+                            class="w-15 h-15 rounded-full border-2 border-luxury-gold">
+                        <div>
+                            <h4 class="font-bold text-lg">Sarah Thompson</h4>
+                            <p class="text-sm text-luxury-gold">Patek Philippe Collector</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-1 mb-4">
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                    </div>
+                    <p class="leading-relaxed text-gray-300">
+                        "As a serious collector, I trust AnandWatchCo completely. Their authentication process is
+                        thorough,
+                        and they've helped me acquire several rare pieces. Truly the best in the business."
+                    </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-8 rounded-3xl text-white">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Customer"
+                            class="w-15 h-15 rounded-full border-2 border-luxury-gold">
+                        <div>
+                            <h4 class="font-bold text-lg">Michael Chen</h4>
+                            <p class="text-sm text-luxury-gold">Omega Speedmaster Owner</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-1 mb-4">
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                        <i class="fas fa-star text-luxury-gold"></i>
+                    </div>
+                    <p class="leading-relaxed text-gray-300">
+                        "Professional, knowledgeable, and passionate about watches. They serviced my vintage Speedmaster
+                        perfectly and it runs like new. I wouldn't trust my watches to anyone else."
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-playfair font-bold text-luxury-dark mb-4">
+                    Contact <span class="text-luxury-gold">Us</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Visit our luxury showroom or get in touch with our watch experts for personalized assistance
+                    and exclusive access to the world's finest timepieces.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 gold-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-luxury-dark"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-luxury-dark mb-2">Luxury Showroom</h3>
+                            <p class="text-gray-600">
+                                123 Luxury Avenue, Premium District<br>
+                                New York, NY 10001<br>
+                                United States
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 blue-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-phone text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-luxury-dark mb-2">Phone & WhatsApp</h3>
+                            <p class="text-gray-600">
+                                <a href="tel:+1234567890" class="hover:text-luxury-gold transition-colors">+1 (234)
+                                    567-890</a><br>
+                                <a href="https://wa.me/1234567890"
+                                    class="hover:text-green-600 transition-colors">WhatsApp Available</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="w-12 h-12 emerald-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-luxury-dark mb-2">Email</h3>
+                            <p class="text-gray-600">
+                                <a href="mailto:info@AnandWatchCo.com"
+                                    class="hover:text-luxury-gold transition-colors">info@AnandWatchCo.com</a><br>
+                                <a href="mailto:service@AnandWatchCo.com"
+                                    class="hover:text-luxury-gold transition-colors">service@AnandWatchCo.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="w-12 h-12 purple-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-clock text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-luxury-dark mb-2">Business Hours</h3>
+                            <p class="text-gray-600">
+                                Monday - Saturday: 10:00 AM - 8:00 PM<br>
+                                Sunday: 12:00 PM - 6:00 PM<br>
+                                <span class="text-green-600 font-semibold">Open Now</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="pt-8 space-y-4">
+                        <button onclick="openQuoteModal()"
+                            class="w-full btn-luxury text-white py-4 rounded-2xl font-bold hover:shadow-lg transition-all">
+                            <i class="fas fa-quote-left mr-3"></i>Get Instant Quote
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Shop Location Section -->
+                <div class="luxury-border rounded-3xl overflow-hidden bg-white shadow-lg">
+                    <!-- Header -->
+                    <div class="p-6 flex items-center gap-4">
+                        <i class="fas fa-map-marker-alt text-luxury-gold text-3xl"></i>
+                        <div>
+                            <h3 class="text-2xl font-playfair font-bold text-luxury-dark">Where is our Shop?</h3>
+                            <p class="text-gray-600 text-sm">Visit Anand Watch – Easily find us on the map below.</p>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="w-full h-96">
+                        <iframe class="w-full h-full border-0" loading="lazy" allowfullscreen
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.3031158446183!2d84.7860536100328!3d19.31264884442683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3d500e86e2f589%3A0x328835ee88cc706c!2sAnand%20Watch%20Co!5e0!3m2!1sen!2sin!4v1752747635183!5m2!1sen!2sin">
+                        </iframe>
+                    </div>
+
+
+                    <!-- Action Buttons -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-6">
+                        <a href="https://wa.me/1234567890" target="_blank"
+                            class="bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition-colors text-center">
+                            <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                        </a>
+                        <a href="tel:+1234567890"
+                            class="border-2 border-luxury-gold text-luxury-gold py-3 rounded-xl font-semibold hover:bg-luxury-gold hover:text-white transition-colors text-center">
+                            <i class="fas fa-phone mr-2"></i>Call Now
+                        </a>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-luxury-dark text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-20 left-20 w-64 h-64 gold-gradient rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-20 w-48 h-48 blue-gradient rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="w-12 h-12 gold-gradient rounded-xl flex items-center justify-center animate-glow">
+                            <i class="fas fa-clock text-luxury-dark text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-playfair font-bold text-luxury-gold">Anand Watch.Co</h3>
+                            <p class="text-sm text-gray-400">Premium Timepieces</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Your trusted partner for luxury timepieces since 1999. We specialize in authentic Swiss watches
+                        from the world's most prestigious manufacturers.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-12 h-12 bg-luxury-gray rounded-xl flex items-center justify-center text-gray-400 hover:text-luxury-gold hover:bg-luxury-gold/20 transition-all">
+                            <i class="fab fa-facebook text-lg"></i>
+                        </a>
+                        <a href="#"
+                            class="w-12 h-12 bg-luxury-gray rounded-xl flex items-center justify-center text-gray-400 hover:text-luxury-gold hover:bg-luxury-gold/20 transition-all">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#"
+                            class="w-12 h-12 bg-luxury-gray rounded-xl flex items-center justify-center text-gray-400 hover:text-luxury-gold hover:bg-luxury-gold/20 transition-all">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <a href="#"
+                            class="w-12 h-12 bg-luxury-gray rounded-xl flex items-center justify-center text-gray-400 hover:text-luxury-gold hover:bg-luxury-gold/20 transition-all">
+                            <i class="fab fa-youtube text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-playfair font-bold mb-8 text-luxury-gold">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#home"
+                                class="text-gray-400 hover:text-luxury-gold transition-colors flex items-center space-x-2">
+                                <i class="fas fa-home w-4"></i><span>Home</span>
+                            </a></li>
+                        <li><a href="#collections"
+                                class="text-gray-400 hover:text-luxury-gold transition-colors flex items-center space-x-2">
+                                <i class="fas fa-clock w-4"></i><span>Collections</span>
+                            </a></li>
+                        <li><a href="#brands"
+                                class="text-gray-400 hover:text-luxury-gold transition-colors flex items-center space-x-2">
+                                <i class="fas fa-crown w-4"></i><span>Premium Brands</span>
+                            </a></li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-luxury-gold transition-colors flex items-center space-x-2">
+                                <i class="fas fa-tools w-4"></i><span>Services</span>
+                            </a></li>
+                        <li><a href="#testimonials"
+                                class="text-gray-400 hover:text-luxury-gold transition-colors flex items-center space-x-2">
+                                <i class="fas fa-star w-4"></i><span>Testimonials</span>
+                            </a></li>
+                        <li><a href="#contact"
+                                class="text-gray-400 hover:text-luxury-gold transition-colors flex items-center space-x-2">
+                                <i class="fas fa-phone w-4"></i><span>Contact</span>
+                            </a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-xl font-playfair font-bold mb-8 text-luxury-gold">Our Services</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#services" class="text-gray-400 hover:text-luxury-gold transition-colors">Watch
+                                Sales & Consultation</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-luxury-gold transition-colors">Repair &
+                                Maintenance</a></li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-luxury-gold transition-colors">Authentication &
+                                Appraisal</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-luxury-gold transition-colors">Trade-In
+                                Program</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-luxury-gold transition-colors">Insurance
+                                Services</a></li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-luxury-gold transition-colors">Collection Management</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-xl font-playfair font-bold mb-8 text-luxury-gold">Get in Touch</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-luxury-gold mt-1"></i>
+                            <div>
+                                <p class="text-gray-400">123 Luxury Avenue</p>
+                                <p class="text-gray-400">New York, NY 10001</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-luxury-gold"></i>
+                            <a href="tel:+1234567890" class="text-gray-400 hover:text-luxury-gold transition-colors">+1
+                                (234) 567-890</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-luxury-gold"></i>
+                            <a href="mailto:info@AnandWatchCo.com"
+                                class="text-gray-400 hover:text-luxury-gold transition-colors">info@AnandWatchCo.com</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fab fa-whatsapp text-luxury-gold"></i>
+                            <a href="https://wa.me/1234567890"
+                                class="text-gray-400 hover:text-luxury-gold transition-colors">WhatsApp Support</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-luxury-gold"></i>
+                            <p class="text-gray-400">Mon-Sat: 10AM-8PM</p>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Signup -->
+                    <div class="mt-8">
+                        <h5 class="font-semibold mb-4 text-luxury-gold">Stay Updated</h5>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email"
+                                class="flex-1 px-4 py-2 bg-luxury-gray border border-gray-600 rounded-l-lg focus:outline-none focus:border-luxury-gold text-white">
+                            <button class="px-4 py-2 gold-gradient rounded-r-lg hover:opacity-90 transition-opacity">
+                                <i class="fas fa-paper-plane text-luxury-dark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-luxury-gray mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">
+                        © 2024 AnandWatchCo. All rights reserved. | Crafted with precision for watch enthusiasts
+                    </p>
+                    <div class="flex space-x-6 text-sm">
+                        <a href="#" class="text-gray-400 hover:text-luxury-gold transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-luxury-gold transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-luxury-gold transition-colors">Warranty</a>
+                        <a href="#" class="text-gray-400 hover:text-luxury-gold transition-colors">Returns</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="floating-whatsapp">
+        <a href="https://wa.me/1234567890" target="_blank"
+            class="w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center transition-all group">
+            <i class="fab fa-whatsapp text-2xl group-hover:scale-110 transition-transform"></i>
+        </a>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Global variables
+        let isMenuOpen = false;
+
+        // Utility Functions
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+
+            notification.className = `notification px-6 py-3 rounded-lg shadow-2xl ${type === 'success' ? 'bg-luxury-gold text-luxury-dark' : 'bg-red-500 text-white'}`;
+            notificationText.textContent = message;
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('menuOverlay');
+
+            isMenuOpen = !isMenuOpen;
+
+            if (isMenuOpen) {
+                menu.classList.add('open');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.remove('open');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Quote Modal
+        function openQuoteModal() {
+            document.getElementById('quoteModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+            toggleMobileMenu(); // Close mobile menu if open
+        }
+
+        function closeQuoteModal() {
+            document.getElementById('quoteModal').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        // Quote Form Submission
+        document.getElementById('quoteForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const button = document.getElementById('quoteButtonText');
+            const spinner = document.getElementById('quoteSpinner');
+
+            // Show loading state
+            button.style.display = 'none';
+            spinner.classList.remove('hidden');
+
+            // Simulate form submission
+            setTimeout(() => {
+                button.style.display = 'inline';
+                spinner.classList.add('hidden');
+
+                showNotification('Quote request submitted successfully! We will contact you soon.');
+                closeQuoteModal();
+
+                // Reset form
+                document.getElementById('quoteForm').reset();
+            }, 2000);
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            showNotification('Message sent successfully! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+
+                    // Close mobile menu after navigation
+                    if (isMenuOpen) {
+                        toggleMobileMenu();
+                    }
+
+                    // Update active nav link
+                    updateActiveNavLink(this.getAttribute('href'));
+                }
+            });
+        });
+
+        // Update active navigation link
+        function updateActiveNavLink(targetHref) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === targetHref) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations and active nav
+        // const observerOptions = {
+        //     threshold: 0.3,
+        //     rootMargin: '-100px 0px -100px 0px'
+        // };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animation class
+                    entry.target.classList.add('animate-slide-up');
+
+                    // Update active nav link
+                    const id = entry.target.getAttribute('id');
+                    if (id) {
+                        updateActiveNavLink(`#${id}`);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            // Show welcome notification
+            setTimeout(() => {
+                showNotification('Welcome to AnandWatchCo - Premium Timepieces!');
+            }, 1000);
+
+            // Observe sections for animations and nav updates
+            document.querySelectorAll('section[id]').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Observe cards for animations
+            document.querySelectorAll('.watch-card, .feature-card, .testimonial-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Set initial active nav link
+            updateActiveNavLink('#home');
+        });
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('quote-modal')) {
+                closeQuoteModal();
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeQuoteModal();
+                if (isMenuOpen) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+
+        // Newsletter signup
+        document.querySelector('footer input[type="email"]').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (this.value) {
+                    showNotification('Thank you for subscribing to our newsletter!');
+                    this.value = '';
+                }
+            }
+        });
+
+        // Newsletter button click
+        document.querySelector('footer button').addEventListener('click', function () {
+            const emailInput = document.querySelector('footer input[type="email"]');
+            if (emailInput.value) {
+                showNotification('Thank you for subscribing to our newsletter!');
+                emailInput.value = '';
+            }
+        });
+
+        // Add loading states to buttons
+        document.querySelectorAll('.btn-luxury').forEach(button => {
+            button.addEventListener('click', function () {
+                if (!this.classList.contains('loading')) {
+                    this.classList.add('loading');
+                    setTimeout(() => {
+                        this.classList.remove('loading');
+                    }, 1000);
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function () {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('#home');
+            if (hero) {
+                const speed = scrolled * 0.5;
+                hero.style.transform = `translateY(${speed}px)`;
+            }
+        });
+    </script>
+</body>
+
+</html>
